@@ -1,4 +1,5 @@
 #!/bin/bash
+# Command to run the fuzzer
 set -e
 
 export CFG_FILE=$PUT/coverage/coverage.json

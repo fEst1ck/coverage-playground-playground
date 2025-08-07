@@ -1,4 +1,5 @@
 #!/bin/bash
+# Build the PUT
 set -e
 
 cd $PUT/src/xpdf-3.02

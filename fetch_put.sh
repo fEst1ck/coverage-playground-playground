@@ -1,4 +1,5 @@
 #!/bin/bash
+# Fetch the source of the PUT
 set -e
 
 cd $PUT

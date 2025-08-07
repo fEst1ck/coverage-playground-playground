@@ -1,4 +1,5 @@
 #!/bin/bash
+# Fetch the corpus
 set -e
 
 ##
