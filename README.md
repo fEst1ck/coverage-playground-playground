@@ -21,3 +21,9 @@ docker run -it fuzzer /bin/bash
 # Run the fuzzing command in the container
 /fuzz.sh
 ```
+
+# System Requirements
+
+Tested on:
+- Ubuntu 24.04.1 LTS
+- Docker version 27.5.1, build 27.5.1-0ubuntu3~24.04.2
