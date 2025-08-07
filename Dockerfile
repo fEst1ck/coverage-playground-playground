@@ -75,8 +75,27 @@ RUN cd "$FUZZER/fuzz-target" && \
     clang -O2 -c FuzzTarget.c && \
     ar rc $FUZZER/libStandaloneFuzzTarget.a FuzzTarget.o
 
-# Run example script
-COPY example.sh /example.sh
-RUN chmod +x /example.sh && \
-    /example.sh
+ENV PUT=/PUT
+RUN mkdir -p $PUT
 
+ENV OUT=/OUT
+RUN mkdir -p $OUT
+RUN cp $FUZZER/repo/target/release/dummy-fuzzer $OUT/dummy-fuzzer
+
+ENV CORPUS=/CORPUS
+RUN mkdir -p $CORPUS
+
+COPY build.sh /build.sh
+COPY fetch_put.sh /fetch_put.sh
+COPY build_put.sh /build_put.sh
+COPY corpus.sh /corpus.sh
+COPY fuzz.sh /fuzz.sh
+
+RUN chmod +x /fetch_put.sh && \
+    chmod +x /build_put.sh && \
+    chmod +x /fuzz.sh && \
+    chmod +x /corpus.sh
+
+RUN /fetch_put.sh
+RUN /build_put.sh
+RUN /corpus.sh
